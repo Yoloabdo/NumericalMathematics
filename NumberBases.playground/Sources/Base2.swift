@@ -23,11 +23,29 @@ public class BaseTwo {
     ///
     /// - Parameter bin: string representation of base 2 number
     /// - Returns: decimal output of converting
-    public static func convert(_ bin: String) -> Decimal {
+    public static func convert(_ bin: String, base: Double = 2) -> Double {
         let results = bin.compactMap{Int(String($0))}.reversed().enumerated()
         return results.reduce(into: 0) { (result, args) in
-            result += Decimal(args.element) * pow(2, args.offset)
+            result += Double(args.element) * pow(base, Double(args.offset))
         }
+    }
+    
+    public static func convertFraction(_ bin: String, base: Double = 2) -> Double {
+        let results = bin.compactMap{Int(String($0))}.reversed().enumerated()
+        return results.reduce(into: 0) { (result, args) in
+            result += Double(args.element) / pow(base, Double(args.offset + 1))
+        }
+    }
+
+
+    public static func convertFull(_ bin: String) -> String {
+        let splitted = bin.split(separator: ".")
+        var results = BaseTwo.convert(String(splitted.first!))
+        guard splitted.count > 1, let second = splitted.last else {
+            return results.description
+        }
+        results += BaseTwo.convertFraction(String(second))
+        return results.description
     }
 
 }
