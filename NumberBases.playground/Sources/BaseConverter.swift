@@ -1,6 +1,6 @@
 import Foundation
 
-public class BaseTwo {
+public class BaseConverter {
     /// Convert decimal numbers to binary
     ///
     /// - Parameter decimal: int number that you want to convery
