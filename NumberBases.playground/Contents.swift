@@ -16,9 +16,3 @@ let sp = fraction.split(separator: ".")
 //BaseTwo.convertbinary(fraction)
 
 
-
-
-
-
-
-convertFull("111.1")
