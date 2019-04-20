@@ -34,7 +34,6 @@ public class BaseConverter {
         let results = bin.compactMap{Int(String($0))}.enumerated()
         return results.reduce(into: 0) { (result, args) in
             result += Double(args.element) / pow(base, Double(args.offset + 1))
-            print(Double(args.element) / pow(base, Double(args.offset + 1)))
         }
     }
 
